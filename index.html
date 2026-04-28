@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text to Speech Controller</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="card">
+        <h1>Text to Speech</h1>
+        <p class="subtitle">
+          Type your text, set words per minute (1-40), then use keyboard shortcuts while speaking.
+        </p>
+
+        <label for="textInput" class="label">Text</label>
+        <textarea
+          id="textInput"
+          rows="8"
+          placeholder="Enter text to read aloud..."
+        ></textarea>
+
+        <div class="speed-row">
+          <label for="wpmRange" class="label">Words per minute: <span id="wpmValue">20</span></label>
+          <input id="wpmRange" type="range" min="1" max="40" value="20" step="1" />
+        </div>
+
+        <div class="controls">
+          <button id="speakBtn" type="button">Speak</button>
+          <button id="stopBtn" type="button" class="secondary">Stop</button>
+        </div>
+
+        <p id="status" class="status">Idle</p>
+        <p class="hint">Shortcut while speaking: <kbd>Space</kbd> pause, <kbd>Enter</kbd> resume.</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
