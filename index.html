@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text to Speech Controller</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,8 +18,22 @@
       <section class="card">
         <h1>Text to Speech</h1>
         <p class="subtitle">
-          Type your text, set words per minute (1-40), then use keyboard shortcuts while speaking.
+          Type your text, choose a mode, then use the controls while speaking.
         </p>
+
+        <div class="mode-row" role="group" aria-label="Reading mode">
+          <button id="writingMode" type="button" class="mode active" aria-pressed="true">Writing</button>
+          <button id="listeningMode" type="button" class="mode" aria-pressed="false">Listening</button>
+          <div class="voice-picker">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 9v6h4l5 4V5L8 9H4Zm12-1a5 5 0 0 1 0 8m2-11a9 9 0 0 1 0 14" />
+            </svg>
+            <select id="voiceSelect" aria-label="Choose voice" disabled>
+              <option value="male" disabled>Male (unavailable)</option>
+              <option value="female" disabled>Female (unavailable)</option>
+            </select>
+          </div>
+        </div>
 
         <label for="textInput" class="label">Text</label>
         <textarea
@@ -28,17 +43,18 @@
         ></textarea>
 
         <div class="speed-row">
-          <label for="wpmRange" class="label">Words per minute: <span id="wpmValue">20</span></label>
-          <input id="wpmRange" type="range" min="1" max="40" value="20" step="1" />
+          <label for="wpmRange" class="label">Words per minute: <span id="wpmValue">21</span></label>
+          <input id="wpmRange" type="range" min="1" max="40" value="21" step="1" />
         </div>
 
         <div class="controls">
           <button id="speakBtn" type="button">Speak</button>
+          <button id="pauseBtn" type="button" class="secondary" disabled>Pause</button>
           <button id="stopBtn" type="button" class="secondary">Stop</button>
         </div>
 
-        <p id="status" class="status">Idle</p>
-        <p class="hint">Shortcut while speaking: <kbd>Space</kbd> pause, <kbd>Enter</kbd> resume.</p>
+        <p id="status" class="status" role="status" aria-live="polite">Idle</p>
+        <p class="hint">Shortcuts: <kbd>Space</kbd> pause, <kbd>Enter</kbd> resume (outside the text box).</p>
       </section>
     </main>
 

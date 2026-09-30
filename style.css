@@ -69,10 +69,87 @@ textarea {
 
 textarea:focus,
 input[type="range"]:focus-visible,
+select:focus-visible,
 button:focus-visible {
   outline: 3px solid rgba(213, 95, 47, 0.35);
   outline-offset: 2px;
 }
+
+.mode-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  padding: 4px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: #efe5da;
+}
+
+button.mode {
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 14px;
+}
+
+button.mode.active {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 1px 4px rgba(54, 41, 31, 0.12);
+}
+
+button.mode:hover { background: #fff7ee; }
+
+.voice-picker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-left: 2px;
+  border: 1px solid #d3c2b2;
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink);
+}
+
+.voice-picker svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.voice-picker:focus-within {
+  outline: 3px solid rgba(213, 95, 47, 0.35);
+  outline-offset: 2px;
+}
+
+.voice-picker:has(select:disabled) { opacity: 0.5; }
+
+.voice-picker select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.voice-picker option {
+  color: var(--ink);
+  font: 16px "Space Grotesk", sans-serif;
+}
+
+.voice-picker select:disabled { cursor: default; }
 
 .speed-row {
   margin-top: 18px;
@@ -113,6 +190,12 @@ button.secondary {
 
 button.secondary:hover {
   background: #c5b7a8;
+}
+
+button:disabled, button:disabled:hover {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
 }
 
 .status {
